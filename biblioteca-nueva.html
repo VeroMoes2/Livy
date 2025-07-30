@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca Livy</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="biblioteca.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="Livy-logo.png" alt="Livy Logo" class="nav-logo">
+                <span class="brand-name">Livy</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Inicio</a></li>
+                <li class="nav-item"><a href="index.html#membresias" class="nav-link">Membresías</a></li>
+                <li class="nav-item"><a href="proceso-livy.html" class="nav-link">Proceso Livy</a></li>
+                <li class="nav-item"><a href="index.html#contactos" class="nav-link">Contactos</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" onclick="window.location.href='index.html';">Iniciar sesión</button>
+                <button class="btn btn-primary" onclick="window.location.href='index.html';">Registrarse</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="biblioteca-main">
+        <div class="container">
+            <div class="biblioteca-header">
+                <h1 class="biblioteca-title" id="temaTitle">Biblioteca Livy</h1>
+                <p class="biblioteca-subtitle" id="temaSubtitle">Conocimiento especializado para tu bienestar</p>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="search-section">
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Buscar artículos...">
+                    <button class="search-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21 21L16.514 16.506M19 10.5C19 15.194 15.194 19 10.5 19S2 15.194 2 10.5 5.806 2 10.5 2 19 5.806 19 10.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Categories Filter -->
+            <div class="categories-section">
+                <h3>Categorías</h3>
+                <div class="categories-container">
+                    <button class="category-btn active" data-category="todos">Todos</button>
+                    <button class="category-btn" data-category="articulos">Artículos</button>
+                    <button class="category-btn" data-category="estudios">Estudios</button>
+                    <button class="category-btn" data-category="guias">Guías</button>
+                    <button class="category-btn" data-category="videos">Videos</button>
+                </div>
+            </div>
+
+            <!-- Articles Grid -->
+            <div class="articles-section">
+                <div class="articles-grid" id="articlesGrid">
+                    <!-- Placeholder articles will be populated by JavaScript -->
+                </div>
+                
+                <!-- Empty State -->
+                <div class="empty-state" id="emptyState">
+                    <div class="empty-icon">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M14 2V8H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M16 13H8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M16 17H8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M10 9H9H8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Contenido próximamente disponible</h3>
+                    <p>Estamos preparando contenido especializado sobre <span id="currentTopic"></span>. Pronto tendrás acceso a artículos, estudios y guías de nuestros expertos.</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="biblioteca.js"></script>
+</body>
+</html>
