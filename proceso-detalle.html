@@ -23,7 +23,8 @@
                 <li class="nav-item"><a href="index.html#contactos" class="nav-link">Contactos</a></li>
             </ul>
             <div class="nav-buttons">
-                <button class="btn btn-secondary" onclick="window.close()">Volver al Inicio</button>
+                <button class="btn btn-secondary" onclick="window.opener.location.href='index.html'; window.close();">Iniciar sesión</button>
+                <button class="btn btn-primary" onclick="window.opener.location.href='index.html'; window.close();">Registrarse</button>
             </div>
         </div>
     </nav>
