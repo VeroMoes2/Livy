@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Register button functionality - scroll to cards section
     btnPrimary.addEventListener('click', function() {
-        const cardsSection = document.querySelector('.cards-section');
+        const cardsSection = document.querySelector('.priority-section');
         if (cardsSection) {
             cardsSection.scrollIntoView({ 
                 behavior: 'smooth',
@@ -155,20 +155,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     });
-    
-    // "Comienza" button functionality - scroll to cards section
-    const comenzarBtn = document.getElementById('comenzarBtn');
-    if (comenzarBtn) {
-        comenzarBtn.addEventListener('click', function() {
-            const cardsSection = document.querySelector('.cards-section');
-            if (cardsSection) {
-                cardsSection.scrollIntoView({ 
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    }
     
     // Register link in login modal
     const registerLinkText = document.querySelector('.register-link-text');
