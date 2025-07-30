@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Livy</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <img src="Livy-logo.png" alt="Livy Logo" class="logo">
+                <span class="brand-name">Livy</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#inicio" class="nav-link active">Inicio</a></li>
+                <li><a href="#membresias" class="nav-link">Membresías</a></li>
+                <li><a href="#proceso-livy" class="nav-link">Proceso Livy</a></li>
+                <li><a href="#contactos" class="nav-link">Contactos</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <button class="btn-secondary">Iniciar sesión</button>
+                <button class="btn-primary">Registrarse</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <main class="hero-section">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">Livy</h1>
+                <h2 class="hero-subtitle">Tu vida, extendida</h2>
+                <p class="hero-description">
+                    Inicia tu camino hacia el bienestar, integrando salud mental, estilo de vida y medicina convencional.<br>
+                    Te acompañamos con atención individualizada basada en evidencia, diseñada por un equipo especializado.
+                </p>
+                <button class="hero-cta-btn" id="comenzarBtn">Comienza</button>
+            </div>
+        </div>
+        <div class="hero-info">
+            <p class="info-text">
+                Inicia tu camino hacia el bienestar, integrando salud mental, estilo de vida y medicina convencional.<br>
+                Te acompañamos con atención individualizada basada en evidencia, diseñada por un equipo especializado.
+            </p>
+        </div>
+        <div class="chatbot-widget">
+            <div class="chatbot-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM8.5 11C7.67 11 7 10.33 7 9.5S7.67 8 8.5 8S10 8.67 10 9.5S9.33 11 8.5 11ZM15.5 11C14.67 11 14 10.33 14 9.5S14.67 8 15.5 8S17 8.67 17 9.5S16.33 11 15.5 11ZM12 17.5C9.67 17.5 7.69 16.04 6.89 14H17.11C16.31 16.04 14.33 17.5 12 17.5Z" fill="currentColor"/>
+                </svg>
+            </div>
+            <span class="chatbot-label">Chatbot</span>
+        </div>
+    </main>
+
+    <!-- Tu salud, nuestra prioridad Section -->
+    <section class="priority-section">
+        <div class="container">
+            <h2 class="section-title">Tu salud, nuestra prioridad</h2>
+            <p class="section-subtitle">Registro</p>
+            <div class="cards-container">
+                <div class="priority-card">
+                    <div class="card-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" fill="currentColor"/>
+                            <path d="M12 6C15.31 6 18 8.69 18 12C18 15.31 15.31 18 12 18C8.69 18 6 15.31 6 12C6 8.69 8.69 6 12 6ZM12 8C9.79 8 8 9.79 8 12C8 14.21 9.79 16 12 16C14.21 16 16 14.21 16 12C16 9.79 14.21 8 12 8Z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-title">Para médicos</h3>
+                    <p class="card-description">Base de datos completa y consultoría especializada en síntomas y estudios médicos.</p>
+                </div>
+                
+                <div class="priority-card">
+                    <div class="card-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" fill="currentColor"/>
+                            <path d="M12 6C15.31 6 18 8.69 18 12C18 15.31 15.31 18 12 18C8.69 18 6 15.31 6 12C6 8.69 8.69 6 12 6ZM12 8C9.79 8 8 9.79 8 12C8 14.21 9.79 16 12 16C14.21 16 16 14.21 16 12C16 9.79 14.21 8 12 8Z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-title">Para pacientes</h3>
+                    <p class="card-description">Coaching personalizado, reportes semanales y seguimiento de tu progreso de salud.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sections placeholders -->
+    <section id="membresias" class="section">
+        <div class="container">
+            <h2>Membresías</h2>
+            <p>Próximamente: Planes personalizados para médicos y pacientes</p>
+        </div>
+    </section>
+
+    <section id="proceso-livy" class="section">
+        <div class="container">
+            <h2>Proceso Livy</h2>
+            <p>Próximamente: Conoce nuestro proceso integral de longevidad y bienestar</p>
+            <button class="read-more-btn" onclick="window.open('proceso-detalle.html', '_blank')">Leer más</button>
+        </div>
+    </section>
+
+    <section id="contactos" class="section">
+        <div class="container">
+            <h2>Contactos</h2>
+            <p>Próximamente: Información de contacto y soporte</p>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <div class="footer-brand">
+                        <span class="footer-brand-name">Livy</span>
+                        <p class="footer-tagline">El futuro de la salud empieza hoy</p>
+                    </div>
+                </div>
+                
+                <div class="footer-right">
+                    <nav class="footer-nav">
+                        <a href="#inicio" class="footer-link">Inicio</a>
+                        <a href="#membresias" class="footer-link">Membresías</a>
+                        <a href="#contactos" class="footer-link">Contactos</a>
+                    </nav>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2024 Livy. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Popup for Pacientes Form -->
+    <div id="pacientesModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Bienvenido a Livy</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p class="modal-subtitle">Comienza tu viaje hacia una vida más larga y saludable con nuestro cuestionario personalizado.</p>
+                
+                <form id="pacientesForm" class="livy-form">
+                    <div class="form-group">
+                        <input type="text" id="nombreCompleto" name="nombreCompleto" placeholder="Nombre completo" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="date" id="fechaNacimiento" name="fechaNacimiento" placeholder="Fecha de nacimiento" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <select id="genero" name="genero" required>
+                            <option value="">Género</option>
+                            <option value="masculino">Masculino</option>
+                            <option value="femenino">Femenino</option>
+                            <option value="otro">Otro</option>
+                            <option value="prefiero-no-decir">Prefiero no decir</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="email" id="correoElectronico" name="correoElectronico" placeholder="Correo electrónico" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="tel" id="telefonoCelular" name="telefonoCelular" placeholder="Teléfono celular" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="text" id="direccion" name="direccion" placeholder="Dirección" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="text" id="curp" name="curp" placeholder="CURP" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="file" id="fotoPerfil" name="fotoPerfil" accept="image/*">
+                        <label for="fotoPerfil" class="file-label">Foto de perfil (opcional)</label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="password" id="contrasena" name="contrasena" placeholder="Contraseña (o método de inicio de sesión preferido)" required>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h3>Objetivo principal en la plataforma</h3>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="objetivos" value="longevidad">
+                                <span class="checkmark"></span>
+                                Longevidad
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="objetivos" value="mejora-habitos">
+                                <span class="checkmark"></span>
+                                Mejora de hábitos
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="objetivos" value="seguimiento-enfermedad">
+                                <span class="checkmark"></span>
+                                Seguimiento de enfermedad
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="objetivos" value="prevencion">
+                                <span class="checkmark"></span>
+                                Prevención
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="objetivos" value="dispositivos-monitoreo">
+                                <span class="checkmark"></span>
+                                Uso de dispositivos de monitoreo
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="objetivos" value="recordatorios-personalizados">
+                                <span class="checkmark"></span>
+                                Deseo de recibir recordatorios o seguimiento personalizado
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="objetivos" value="consentimiento-datos">
+                                <span class="checkmark"></span>
+                                Consentimiento informado para el uso de datos de salud
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="objetivos" value="aviso-privacidad">
+                                <span class="checkmark"></span>
+                                Aviso de privacidad aceptado (con link)
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="objetivos" value="terminos-condiciones">
+                                <span class="checkmark"></span>
+                                Aceptación de términos y condiciones
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="objetivos" value="recomendaciones-ia">
+                                <span class="checkmark"></span>
+                                Interés en recomendaciones de IA para dispositivos de monitoreo
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-note">
+                        <p><strong>Nota:</strong> Al completar este cuestionario, obtendrás acceso a una sesión gratuita con beneficios limitados. Para una experiencia completa, considera nuestras membresías.</p>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Enviar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Popup for Médicos Form -->
+    <div id="medicosModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Bienvenido a Livy</h2>
+                <span class="close-medicos">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p class="modal-subtitle">Impulsa el futuro de la medicina. Tu experiencia puede transformar vidas y ser clave en la construcción de una nueva era de longevidad.</p>
+                
+                <h3 class="form-section-title">Regístrate como médico</h3>
+                
+                <form id="medicosForm" class="livy-form">
+                    <div class="form-group">
+                        <input type="text" id="nombreCompletoMedico" name="nombreCompleto" placeholder="Ingresa tu nombre completo" required>
+                        <label class="form-label">Nombre completo</label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="date" id="fechaNacimientoMedico" name="fechaNacimiento" placeholder="Selecciona tu fecha de nacimiento" required>
+                        <label class="form-label">Fecha de nacimiento</label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <select id="generoMedico" name="genero">
+                            <option value="">Selecciona tu género</option>
+                            <option value="masculino">Masculino</option>
+                            <option value="femenino">Femenino</option>
+                            <option value="otro">Otro</option>
+                            <option value="prefiero-no-decir">Prefiero no decir</option>
+                        </select>
+                        <label class="form-label">Género (opcional)</label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="email" id="correoMedico" name="correoElectronico" placeholder="Ingresa tu correo electrónico profesional" required>
+                        <label class="form-label">Correo electrónico profesional</label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="tel" id="telefonoMedico" name="telefono" placeholder="Ingresa tu teléfono móvil" required>
+                        <label class="form-label">Teléfono móvil</label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="file" id="fotoPerfilMedico" name="fotoPerfil" accept="image/*">
+                        <label for="fotoPerfilMedico" class="file-label">Sube tu foto de perfil</label>
+                        <label class="form-label">Foto de perfil profesional</label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <select id="especialidadMedica" name="especialidad" required>
+                            <option value="">Selecciona tu especialidad</option>
+                            <option value="medicina-general">Medicina General</option>
+                            <option value="cardiologia">Cardiología</option>
+                            <option value="neurologia">Neurología</option>
+                            <option value="endocrinologia">Endocrinología</option>
+                            <option value="geriatria">Geriatría</option>
+                            <option value="medicina-preventiva">Medicina Preventiva</option>
+                            <option value="medicina-interna">Medicina Interna</option>
+                            <option value="oncologia">Oncología</option>
+                            <option value="psiquiatria">Psiquiatría</option>
+                            <option value="otra">Otra</option>
+                        </select>
+                        <label class="form-label">Especialidad médica</label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="text" id="numeroCedula" name="numeroCedula" placeholder="Ingresa tu número de cédula" required>
+                        <label class="form-label">Número de cédula profesional</label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <select id="paisEmision" name="paisEmision" required>
+                            <option value="">Selecciona el país</option>
+                            <option value="mexico">México</option>
+                            <option value="estados-unidos">Estados Unidos</option>
+                            <option value="canada">Canadá</option>
+                            <option value="españa">España</option>
+                            <option value="argentina">Argentina</option>
+                            <option value="colombia">Colombia</option>
+                            <option value="chile">Chile</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                        <label class="form-label">País de emisión de la cédula</label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <select id="idiomasDomina" name="idiomas" multiple>
+                            <option value="español">Español</option>
+                            <option value="ingles">Inglés</option>
+                            <option value="frances">Francés</option>
+                            <option value="portugues">Portugués</option>
+                            <option value="italiano">Italiano</option>
+                            <option value="aleman">Alemán</option>
+                        </select>
+                        <label class="form-label">Idiomas que domina</label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <select id="areasInteres" name="areasInteres" multiple>
+                            <option value="longevidad">Longevidad</option>
+                            <option value="medicina-preventiva">Medicina Preventiva</option>
+                            <option value="telemedicina">Telemedicina</option>
+                            <option value="investigacion">Investigación</option>
+                            <option value="educacion-medica">Educación Médica</option>
+                            <option value="tecnologia-medica">Tecnología Médica</option>
+                            <option value="medicina-personalizada">Medicina Personalizada</option>
+                        </select>
+                        <label class="form-label">Áreas de interés</label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="file" id="cedulaProfesional" name="cedulaProfesional" accept=".pdf,image/*">
+                        <label for="cedulaProfesional" class="file-label">Sube tu cédula</label>
+                        <label class="form-label">Cédula profesional (PDF o imagen escaneada)</label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="file" id="identificacionOficial" name="identificacionOficial" accept=".pdf,image/*">
+                        <label for="identificacionOficial" class="file-label">Sube tu identificación</label>
+                        <label class="form-label">Identificación oficial (INE/pasaporte)</label>
+                    </div>
+                    
+                    <div class="form-section">
+                        <div class="checkbox-group">
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="consentimientos" value="tratamiento-datos" required>
+                                <span class="checkmark"></span>
+                                Consiento el tratamiento de mis datos personales de acuerdo con la política de privacidad
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="intereses" value="investigacion-medica">
+                                <span class="checkmark"></span>
+                                Estoy interesado en colaborar en investigación médica
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="intereses" value="pacientes-otras-zonas">
+                                <span class="checkmark"></span>
+                                Estoy interesado en recibir pacientes de otras zonas geográficas
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Registrarme</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Popup for Login -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content login-modal">
+            <div class="modal-header">
+                <h2>Bienvenido a Livy</h2>
+                <span class="close-login">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="loginForm" class="livy-form">
+                    <!-- User Type Selection -->
+                    <div class="user-type-selection">
+                        <div class="user-type-tabs">
+                            <button type="button" class="user-type-tab active" data-type="medico">
+                                Médico
+                            </button>
+                            <button type="button" class="user-type-tab" data-type="paciente">
+                                Paciente
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="email" id="loginEmail" name="email" placeholder="Correo electrónico" required>
+                    </div>
+                    
+                    <!-- Campo específico para médicos -->
+                    <div class="form-group medico-field">
+                        <input type="text" id="loginCedula" name="cedula" placeholder="Número de cédula profesional" required>
+                    </div>
+                    
+                    <!-- Campo específico para pacientes -->
+                    <div class="form-group paciente-field" style="display: none;">
+                        <input type="text" id="loginCurp" name="curp" placeholder="CURP" required maxlength="18">
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="password" id="loginPassword" name="password" placeholder="Contraseña" required>
+                    </div>
+                    
+                    <div class="login-options">
+                        <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn login-btn">Iniciar Sesión</button>
+                    
+                    <div class="login-footer">
+                        <p class="register-link">
+                            ¿No tienes una cuenta? 
+                            <a href="#" class="register-link-text">Regístrate</a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
