@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca Livy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --deep-blue: #1e40af;
+            --turquoise: #14b8a6;
+            --lavender: #8b5cf6;
+            --dark-gray: #374151;
+            --warm-white: #f8fafc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            min-height: 100vh;
+        }
+
+        /* Navigation Styles */
+        .navbar {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            height: 80px;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .nav-logo {
+            height: 40px;
+            width: auto;
+        }
+
+        .brand-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #1e40af, #059669);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #374151;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: #14b8a6;
+        }
+
+        .nav-link.active {
+            color: #14b8a6;
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #14b8a6;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #14b8a6;
+            border: 2px solid #14b8a6;
+        }
+
+        .btn-secondary:hover {
+            background: #14b8a6;
+            color: white;
+            transform: translateY(-1px);
+        }
+
+        .btn-primary {
+            background: #14b8a6;
+            color: white;
+            border: 2px solid #14b8a6;
+        }
+
+        .btn-primary:hover {
+            background: #0f766e;
+            border-color: #0f766e;
+            transform: translateY(-1px);
+        }
+
+        /* Main Content */
+        .biblioteca-main {
+            padding-top: 120px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .biblioteca-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .biblioteca-title {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #1e40af, #14b8a6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .biblioteca-subtitle {
+            font-size: 1.2rem;
+            color: #374151;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Search Section */
+        .search-section {
+            margin-bottom: 2rem;
+        }
+
+        .search-container {
+            max-width: 500px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem 3rem 1rem 1.5rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #14b8a6;
+        }
+
+        .search-btn {
+            position: absolute;
+            right: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #14b8a6;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-btn:hover {
+            background: #0f766e;
+        }
+
+        /* Categories Section */
+        .categories-section {
+            margin-bottom: 3rem;
+        }
+
+        .categories-section h3 {
+            color: #374151;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .categories-container {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .category-btn {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid #e5e7eb;
+            background: white;
+            border-radius: 50px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #374151;
+        }
+
+        .category-btn:hover {
+            border-color: #14b8a6;
+            color: #14b8a6;
+        }
+
+        .category-btn.active {
+            background: #14b8a6;
+            border-color: #14b8a6;
+            color: white;
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .empty-icon {
+            margin-bottom: 2rem;
+            color: #9ca3af;
+        }
+
+        .empty-state h3 {
+            color: #374151;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .empty-state p {
+            color: #6b7280;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        #currentTopic {
+            color: #14b8a6;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .biblioteca-title {
+                font-size: 2rem;
+            }
+            
+            .categories-container {
+                justify-content: flex-start;
+            }
+            
+            .category-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="Livy-logo.png" alt="Livy Logo" class="nav-logo">
+                <span class="brand-name">Livy</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Inicio</a></li>
+                <li class="nav-item"><a href="index.html#membresias" class="nav-link">Membresías</a></li>
+                <li class="nav-item"><a href="proceso-completo.html" class="nav-link">Proceso Livy</a></li>
+                <li class="nav-item"><a href="index.html#contactos" class="nav-link">Contactos</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" onclick="window.location.href='index.html';">Iniciar sesión</button>
+                <button class="btn btn-primary" onclick="window.location.href='index.html';">Registrarse</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="biblioteca-main">
+        <div class="container">
+            <div class="biblioteca-header">
+                <h1 class="biblioteca-title" id="temaTitle">Biblioteca Livy</h1>
+                <p class="biblioteca-subtitle" id="temaSubtitle">Conocimiento especializado para tu bienestar</p>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="search-section">
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Buscar artículos...">
+                    <button class="search-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21 21L16.514 16.506M19 10.5C19 15.194 15.194 19 10.5 19S2 15.194 2 10.5 5.806 2 10.5 2 19 5.806 19 10.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Categories Filter -->
+            <div class="categories-section">
+                <h3>Categorías</h3>
+                <div class="categories-container">
+                    <button class="category-btn active" data-category="todos">Todos</button>
+                    <button class="category-btn" data-category="articulos">Artículos</button>
+                    <button class="category-btn" data-category="estudios">Estudios</button>
+                    <button class="category-btn" data-category="guias">Guías</button>
+                    <button class="category-btn" data-category="videos">Videos</button>
+                </div>
+            </div>
+
+            <!-- Articles Section -->
+            <div class="articles-section">
+                <!-- Empty State -->
+                <div class="empty-state" id="emptyState">
+                    <div class="empty-icon">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M14 2V8H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M16 13H8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M16 17H8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M10 9H9H8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Contenido próximamente disponible</h3>
+                    <p>Estamos preparando contenido especializado sobre <span id="currentTopic">este tema</span>. Pronto tendrás acceso a artículos, estudios y guías de nuestros expertos.</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        // Get topic from URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const tema = urlParams.get('tema');
+        
+        // Topic mapping
+        const temas = {
+            'alimentacion': 'Alimentación y Salud Intestinal',
+            'estres': 'Manejo del Estrés y Salud Mental',
+            'sueno': 'Hábitos del Sueño',
+            'ejercicio': 'Ejercicio',
+            'medicina': 'Medicina Integral',
+            'guia': 'Guía de Salud',
+            'educacion': 'Educación acerca de tu Salud',
+            'diagnosticos': 'Estudios Diagnósticos'
+        };
+        
+        // Update page content based on topic
+        if (tema && temas[tema]) {
+            document.getElementById('temaTitle').textContent = temas[tema];
+            document.getElementById('temaSubtitle').textContent = `Recursos especializados sobre ${temas[tema].toLowerCase()}`;
+            document.getElementById('currentTopic').textContent = temas[tema].toLowerCase();
+        }
+    </script>
+</body>
+</html>

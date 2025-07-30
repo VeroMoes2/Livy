@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proceso Livy - Diagrama Completo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --deep-blue: #1e40af;
+            --turquoise: #14b8a6;
+            --lavender: #8b5cf6;
+            --dark-gray: #374151;
+            --warm-white: #f8fafc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            min-height: 100vh;
+        }
+
+        /* Navigation Styles */
+        .navbar {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            height: 80px;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .nav-logo {
+            height: 40px;
+            width: auto;
+        }
+
+        .brand-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #1e40af, #059669);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #374151;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: #14b8a6;
+        }
+
+        .nav-link.active {
+            color: #14b8a6;
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #14b8a6;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #14b8a6;
+            border: 2px solid #14b8a6;
+        }
+
+        .btn-secondary:hover {
+            background: #14b8a6;
+            color: white;
+            transform: translateY(-1px);
+        }
+
+        .btn-primary {
+            background: #14b8a6;
+            color: white;
+            border: 2px solid #14b8a6;
+        }
+
+        .btn-primary:hover {
+            background: #0f766e;
+            border-color: #0f766e;
+            transform: translateY(-1px);
+        }
+
+        /* Main Content */
+        .proceso-main {
+            padding-top: 120px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .proceso-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .proceso-title {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #1e40af, #14b8a6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .proceso-subtitle {
+            font-size: 1.2rem;
+            color: #374151;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Diagram Styles */
+        .diagram-section {
+            margin-top: 3rem;
+        }
+
+        .diagram-container {
+            position: relative;
+            width: 600px;
+            height: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+        }
+
+        .diagram-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #1e40af, #14b8a6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+            z-index: 10;
+        }
+
+        .diagram-point {
+            position: absolute;
+            width: 140px;
+            text-align: center;
+            z-index: 5;
+        }
+
+        .diagram-link {
+            display: block;
+            padding: 1rem;
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 15px;
+            text-decoration: none;
+            color: #374151;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .diagram-link:hover {
+            border-color: #14b8a6;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(20, 184, 166, 0.2);
+        }
+
+        .point-title {
+            display: block;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .point-subtitle {
+            display: block;
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        /* Positioning for each point */
+        .point-1 { top: 20px; left: 50%; transform: translateX(-50%); }
+        .point-2 { top: 80px; right: 40px; }
+        .point-3 { top: 50%; right: 20px; transform: translateY(-50%); }
+        .point-4 { bottom: 80px; right: 40px; }
+        .point-5 { bottom: 20px; left: 50%; transform: translateX(-50%); }
+        .point-6 { bottom: 80px; left: 40px; }
+        .point-7 { top: 50%; left: 20px; transform: translateY(-50%); }
+        .point-8 { top: 80px; left: 40px; }
+
+        .diagram-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        @media (max-width: 768px) {
+            .diagram-container {
+                width: 90%;
+                height: 500px;
+            }
+            
+            .diagram-point {
+                width: 100px;
+            }
+            
+            .diagram-link {
+                padding: 0.75rem;
+            }
+            
+            .point-title {
+                font-size: 0.8rem;
+            }
+            
+            .point-subtitle {
+                font-size: 0.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="Livy-logo.png" alt="Livy Logo" class="nav-logo">
+                <span class="brand-name">Livy</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Inicio</a></li>
+                <li class="nav-item"><a href="index.html#membresias" class="nav-link">Membresías</a></li>
+                <li class="nav-item"><a href="#" class="nav-link active">Proceso Livy</a></li>
+                <li class="nav-item"><a href="index.html#contactos" class="nav-link">Contactos</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" onclick="window.location.href='index.html';">Iniciar sesión</button>
+                <button class="btn btn-primary" onclick="window.location.href='index.html';">Registrarse</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="proceso-main">
+        <div class="container">
+            <div class="proceso-header">
+                <h1 class="proceso-title">Proceso Livy</h1>
+                <p class="proceso-subtitle">Nuestro enfoque integral de longevidad y bienestar</p>
+            </div>
+
+            <!-- Longevity Diagram Section -->
+            <div class="diagram-section">
+                <div class="diagram-container">
+                    <div class="diagram-center">
+                        <span class="center-text">Longevidad</span>
+                    </div>
+                    
+                    <!-- Diagram Points -->
+                    <div class="diagram-point point-1">
+                        <a href="biblioteca-test.html?tema=alimentacion" class="diagram-link">
+                            <span class="point-title">Alimentación y</span>
+                            <span class="point-subtitle">salud intestinal</span>
+                        </a>
+                    </div>
+                    
+                    <div class="diagram-point point-2">
+                        <a href="biblioteca-test.html?tema=estres" class="diagram-link">
+                            <span class="point-title">Manejo del estrés</span>
+                            <span class="point-subtitle">y salud mental</span>
+                        </a>
+                    </div>
+                    
+                    <div class="diagram-point point-3">
+                        <a href="biblioteca-test.html?tema=sueno" class="diagram-link">
+                            <span class="point-title">Hábitos</span>
+                            <span class="point-subtitle">del sueño</span>
+                        </a>
+                    </div>
+                    
+                    <div class="diagram-point point-4">
+                        <a href="biblioteca-test.html?tema=ejercicio" class="diagram-link">
+                            <span class="point-title">Ejercicio</span>
+                        </a>
+                    </div>
+                    
+                    <div class="diagram-point point-5">
+                        <a href="biblioteca-test.html?tema=medicina" class="diagram-link">
+                            <span class="point-title">Medicina Integral</span>
+                        </a>
+                    </div>
+                    
+                    <div class="diagram-point point-6">
+                        <a href="biblioteca-test.html?tema=guia" class="diagram-link">
+                            <span class="point-title">Guía de salud</span>
+                        </a>
+                    </div>
+                    
+                    <div class="diagram-point point-7">
+                        <a href="biblioteca-test.html?tema=educacion" class="diagram-link">
+                            <span class="point-title">Educación</span>
+                            <span class="point-subtitle">acerca de</span>
+                            <span class="point-subtitle">tu salud</span>
+                        </a>
+                    </div>
+                    
+                    <div class="diagram-point point-8">
+                        <a href="biblioteca-test.html?tema=diagnosticos" class="diagram-link">
+                            <span class="point-title">Estudios</span>
+                            <span class="point-subtitle">diagnósticos</span>
+                        </a>
+                    </div>
+
+                    <!-- SVG Lines connecting points -->
+                    <svg class="diagram-lines" viewBox="0 0 600 600">
+                        <!-- Lines from center to each point -->
+                        <line x1="300" y1="300" x2="300" y2="100" stroke="#e5e7eb" stroke-width="2"/>
+                        <line x1="300" y1="300" x2="450" y2="150" stroke="#e5e7eb" stroke-width="2"/>
+                        <line x1="300" y1="300" x2="500" y2="300" stroke="#e5e7eb" stroke-width="2"/>
+                        <line x1="300" y1="300" x2="450" y2="450" stroke="#e5e7eb" stroke-width="2"/>
+                        <line x1="300" y1="300" x2="300" y2="500" stroke="#e5e7eb" stroke-width="2"/>
+                        <line x1="300" y1="300" x2="150" y2="450" stroke="#e5e7eb" stroke-width="2"/>
+                        <line x1="300" y1="300" x2="100" y2="300" stroke="#e5e7eb" stroke-width="2"/>
+                        <line x1="300" y1="300" x2="150" y2="150" stroke="#e5e7eb" stroke-width="2"/>
+                        
+                        <!-- Interconnecting lines between points -->
+                        <line x1="300" y1="100" x2="450" y2="150" stroke="#e5e7eb" stroke-width="1" opacity="0.6"/>
+                        <line x1="450" y1="150" x2="500" y2="300" stroke="#e5e7eb" stroke-width="1" opacity="0.6"/>
+                        <line x1="500" y1="300" x2="450" y2="450" stroke="#e5e7eb" stroke-width="1" opacity="0.6"/>
+                        <line x1="450" y1="450" x2="300" y2="500" stroke="#e5e7eb" stroke-width="1" opacity="0.6"/>
+                        <line x1="300" y1="500" x2="150" y2="450" stroke="#e5e7eb" stroke-width="1" opacity="0.6"/>
+                        <line x1="150" y1="450" x2="100" y2="300" stroke="#e5e7eb" stroke-width="1" opacity="0.6"/>
+                        <line x1="100" y1="300" x2="150" y2="150" stroke="#e5e7eb" stroke-width="1" opacity="0.6"/>
+                        <line x1="150" y1="150" x2="300" y2="100" stroke="#e5e7eb" stroke-width="1" opacity="0.6"/>
+                    </svg>
+                </div>
+            </div>
+
+        </div>
+    </main>
+</body>
+</html>

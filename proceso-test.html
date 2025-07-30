@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proceso Livy - Test</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --deep-blue: #1e40af;
+            --turquoise: #14b8a6;
+            --lavender: #8b5cf6;
+            --dark-gray: #374151;
+            --warm-white: #f8fafc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            min-height: 100vh;
+        }
+
+        /* Navigation Styles */
+        .navbar {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            height: 80px;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .nav-logo {
+            height: 40px;
+            width: auto;
+        }
+
+        .brand-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #1e40af, #059669);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #374151;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: #14b8a6;
+        }
+
+        .nav-link.active {
+            color: #14b8a6;
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #14b8a6;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #14b8a6;
+            border: 2px solid #14b8a6;
+        }
+
+        .btn-secondary:hover {
+            background: #14b8a6;
+            color: white;
+            transform: translateY(-1px);
+        }
+
+        .btn-primary {
+            background: #14b8a6;
+            color: white;
+            border: 2px solid #14b8a6;
+        }
+
+        .btn-primary:hover {
+            background: #0f766e;
+            border-color: #0f766e;
+            transform: translateY(-1px);
+        }
+
+        /* Main Content */
+        .proceso-main {
+            padding-top: 120px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .proceso-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .proceso-title {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #1e40af, #14b8a6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .proceso-subtitle {
+            font-size: 1.2rem;
+            color: #374151;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="Livy-logo.png" alt="Livy Logo" class="nav-logo">
+                <span class="brand-name">Livy</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Inicio</a></li>
+                <li class="nav-item"><a href="index.html#membresias" class="nav-link">Membresías</a></li>
+                <li class="nav-item"><a href="#" class="nav-link active">Proceso Livy</a></li>
+                <li class="nav-item"><a href="index.html#contactos" class="nav-link">Contactos</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" onclick="window.location.href='index.html';">Iniciar sesión</button>
+                <button class="btn btn-primary" onclick="window.location.href='index.html';">Registrarse</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="proceso-main">
+        <div class="container">
+            <div class="proceso-header">
+                <h1 class="proceso-title">Proceso Livy</h1>
+                <p class="proceso-subtitle">Próximamente: Conoce nuestro proceso integral de longevidad y bienestar</p>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <h2 style="color: #374151; margin-bottom: 2rem;">¡La navegación funciona correctamente!</h2>
+                <p style="color: #6b7280; font-size: 1.1rem; line-height: 1.6;">
+                    Esta es una versión de prueba con estilos inline para verificar que la navegación se muestre correctamente.<br>
+                    Los botones "Iniciar sesión" y "Registrarse" deberían estar visibles en la barra superior.
+                </p>
+                
+                <div style="margin-top: 2rem; padding: 2rem; background: white; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                    <h3 style="color: #14b8a6; margin-bottom: 1rem;">Test de Navegación</h3>
+                    <p style="color: #374151;">Si puedes ver los botones "Iniciar sesión" y "Registrarse" en la barra superior, entonces el problema está resuelto.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
